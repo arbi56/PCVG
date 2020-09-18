@@ -1,5 +1,5 @@
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def readme():
@@ -15,8 +15,7 @@ setup(
     long_description_content_type='text/markdown',
     license="MIT License",
     url="https://github.com/arbi56/PCVG",
-    packages=[
-        "pcvg"],
+    packages=find_packages(),
     python_requires='>=3.5',
     install_requires=[
         "numpy",
