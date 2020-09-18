@@ -8,9 +8,9 @@ def readme():
 
 
 setup(
-    name="PCVG",
+    name="pcvg",
     version="0.9.0",
-    description="Package providing OCVG and various utilities",
+    description="Package providing PCVG and various utilities",
     long_description=readme(),
     long_description_content_type='text/markdown',
     license="MIT License",
