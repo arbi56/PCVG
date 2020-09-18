@@ -16,8 +16,7 @@ setup(
     license="MIT License",
     url="https://github.com/arbi56/PCVG",
     packages=[
-        "PCVG",
-        "PCVG.utils"],
+        "pcvg"],
     python_requires='>=3.5',
     install_requires=[
         "numpy",
