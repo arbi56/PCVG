@@ -1,3 +1,5 @@
+import numpy as np
+
 def get_scaled_copy(data, scaling_type = None):     
     """ Returns a scaled copy of a pandas DataFrame ready for PCA.
 

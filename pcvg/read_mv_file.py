@@ -1,5 +1,6 @@
 from collections import defaultdict
 import pandas as pd
+import numpy as np
 
 def read_mv_file(path_name, column_to_use_as_index=0, first_data_col=0, code=None, duplicate_sample_action=None):
     """Loads a MarkerView file that was exported with the Table exporte plug-in (this correctly handes data from multiple experiments)
