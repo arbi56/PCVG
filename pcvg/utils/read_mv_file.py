@@ -2,7 +2,7 @@ from collections import defaultdict
 import pandas as pd
 
 def read_mv_file(path_name, column_to_use_as_index=0, first_data_col=0, code=None, duplicate_sample_action=None):
-    """Loads a MarkerView file that was exported with the Table exporte plug-in (this correctly handes data from multiple experiments)
+    """Loads a MarkerView file that was exported with the Table export plug-in (this correctly handes data from multiple experiments)
         
         The table has columns for:
             Sample_Name
@@ -16,7 +16,7 @@ def read_mv_file(path_name, column_to_use_as_index=0, first_data_col=0, code=Non
         Parameters:
         
                 path_name: path to the file in the format of the local OS)
-                column_to_use_as_index: the index number of the column that will be teh index of the data DataFrame...for MV this is column 0, the Sample_Name
+                column_to_use_as_index: the index number of the column that will be the index of the data DataFrame...for MV this is column 0, the Sample_Name
                 first_data_col: the index of the first column containing data; this and subsequent columns are extracted as the data DataFrame and teh others as metaData
                 code: a code can be appended to the data; this is necessary when data sets are merged
                 duplicate_sample_action: data sets can contain damples with the same nmae, for example QCs that are injected multiple times without changing the name.
