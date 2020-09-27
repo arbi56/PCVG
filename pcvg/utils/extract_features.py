@@ -3,12 +3,14 @@
 import pandas as pd
 
 def extract_features(data, get_stats=True):
-   """ Extracts the features froa a pandas DataFrame where the column names encode the features. The column names are
+ 
+    """ Extracts the features froa a pandas DataFrame where the column names encode the features.
+        The column names are
         replaced with F0, F1, F2... which also become the index for the feature DataFrame returned.
         Optionally extracts some statistics for the features
 
         Parameters:
-    
+
             data - the DataFrame to use
 
         The column names are strings encoding the feature information.
@@ -29,13 +31,13 @@ def extract_features(data, get_stats=True):
             we remove the parentheses and store the first 4 characters
 
     """
-    
+
     # We parse the column names and store each one as a dictionary of dictionaries.
     # The outer key is the new feature name (F0, F1...) and the inner keys are the fields of the features.
     # This is converted to a Pandas DataFrame and transposed to get the features in rows
 
-    new_names = []
     features = {}   # master dictionary
+    new_names = []
 
     for i, c in enumerate(data.columns):
 
