@@ -64,14 +64,15 @@ def plot_raw_data(feature_df, x, y, x_label, y_label, data_desc, size_field, col
             </div>
        </div>
     """ 
-    # define the ColumnDataSource to be used 
-    bokeh_source = ColumnDataSource(feature_df)
     
     # add a 'point_size' column to the feature FDataFrame.
     # the field to use is passed in by the caller and the default settings for circle size and whether to take the square root
     # can be overriden with kwargs.
     # the return value is a string that describes the data used for sizing
     size_desc = set_size_column(feature_df, size_field, kwargs['size_max'], kwargs["size_use_sqrt"])
+    
+     # define the ColumnDataSource to be used 
+    bokeh_source = ColumnDataSource(feature_df)
     
     colours = kwargs['palette']
     
