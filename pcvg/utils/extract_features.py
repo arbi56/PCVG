@@ -2,7 +2,7 @@
 from .get_stats import get_stats
 import pandas as pd
 
-def extract_features(data_df, get_stats=True):
+def extract_features(data_df, extract_stats=True):
  
     """ Extracts the features froa a pandas DataFrame where the column names encode the features.
         The column names are
@@ -12,6 +12,7 @@ def extract_features(data_df, get_stats=True):
         Parameters:
 
             data_df - the DataFrame to use
+            extract_stats - TRue if we're to add the statistcs columns
 
         The column names are strings encoding the feature information.
 
@@ -72,7 +73,7 @@ def extract_features(data_df, get_stats=True):
     
     data_df.columns = new_names
 
-    if get_stats:
+    if extract_stats:
         feature_df = get_stats(feature_df, data_df)
 
     return data_df, feature_df
