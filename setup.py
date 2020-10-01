@@ -18,9 +18,11 @@ setup(
     packages=[
         'pcvg',
         "pcvg.processing",
-        "pcvg.utils"],
+        "pcvg.utils",
+        "pcvg.plotting"],
     python_requires='>=3.5',
     install_requires=[
+        "bokeh>=1.0.0",
         "numpy",
         "pandas"],
     author='Ron Bonner',

@@ -1,8 +1,8 @@
 #extract_features.py
-
+from .get_stats import get_stats
 import pandas as pd
 
-def extract_features(data, get_stats=True):
+def extract_features(data_df, get_stats=True):
  
     """ Extracts the features froa a pandas DataFrame where the column names encode the features.
         The column names are
@@ -11,13 +11,13 @@ def extract_features(data, get_stats=True):
 
         Parameters:
 
-            data - the DataFrame to use
+            data_df - the DataFrame to use
 
         The column names are strings encoding the feature information.
 
         Returns:
 
-            data - the original datafrane with the columns renames as F0, F1, F2...
+            data_df - the original datafrane with the columns renames as F0, F1, F2...
             features_df - a DataFrame containing the features; each column represents a field of the feature
 
         For MarkerView, the column name is a string made up of fields separated by underscores and have the following meaning:
@@ -39,7 +39,7 @@ def extract_features(data, get_stats=True):
     features = {}   # master dictionary
     new_names = []
 
-    for i, c in enumerate(data.columns):
+    for i, c in enumerate(data_df.columns):
 
         feature_index = f'F{i}'
 
@@ -70,15 +70,10 @@ def extract_features(data, get_stats=True):
 
     feature_df = feature_df.fillna('n/a');
     
-    data.columns = new_names
+    data_df.columns = new_names
 
-    if(get_stats):
-        # extract column-wise statistics, i.e. across all samples
-        feature_df['non_zero'] =  (data != 0.0).sum(0)    #since True==1, the sum is the number of fields tat are non-zero
-        feature_df['mean'] = data.mean(axis=0)
-        feature_df['median'] = data.median(axis=0)
-        feature_df['std'] = data.std(axis=0)
-        feature_df['max'] = data.max(axis=0)
+    if get_stats:
+        feature_df = get_stats(feature_df, data_df)
 
-    return data, feature_df
+    return data_df, feature_df
     
