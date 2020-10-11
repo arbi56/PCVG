@@ -23,6 +23,7 @@ def plot_raw_data(feature_df, x, y, x_label, y_label, data_desc, size_field, col
         
         Returns
             a plot that can be diplayed with show(p) (Bokeh show command)
+            the ColumndataSource used by bokeh
         
         Default parameters are set by adding them to the kwargs dictionary (which need not be specified by the caller) and
         can be overridden by passing a dictionary.
@@ -65,9 +66,9 @@ def plot_raw_data(feature_df, x, y, x_label, y_label, data_desc, size_field, col
        </div>
     """ 
     
-    # add a 'point_size' column to the feature FDataFrame.
-    # the field to use is passed in by the caller and the default settings for circle size and whether to take the square root
-    # can be overriden with kwargs.
+    # add a 'point_size' column to the feature DataFrame.
+    # the field to use is passed in by the caller
+    # the default settings are used for circle size and whether to take the square root; can be overriden with kwargs.
     # the return value is a string that describes the data used for sizing
     size_desc = set_size_column(feature_df, size_field, kwargs['size_max'], kwargs["size_use_sqrt"])
     
@@ -108,4 +109,4 @@ def plot_raw_data(feature_df, x, y, x_label, y_label, data_desc, size_field, col
 
     #p.add_tools(HoverTool(tooltips=[("rt", "@rt"), ("mz", "@mz")]))
     
-    return p
+    return p, bokeh_source
