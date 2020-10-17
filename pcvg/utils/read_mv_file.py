@@ -1,7 +1,7 @@
 from collections import defaultdict
 import pandas as pd
 
-def read_mv_file(path_name, column_to_use_as_index=0, first_data_col=0, code=None, duplicate_sample_action=None):
+def read_mv_file(path_name, column_to_use_as_index=0, first_data_col=0, duplicate_sample_action=None):
     """Loads a MarkerView file that was exported with the Table export plug-in (this correctly handes data from multiple experiments)
         
         The table has columns for:
@@ -77,10 +77,6 @@ def read_mv_file(path_name, column_to_use_as_index=0, first_data_col=0, code=Non
     if first_data_col:
         meta_data = data.iloc[:, :first_data_col-1]
         data = data.iloc[:, first_data_col:]
-
-    #if there's a code append it to all feature names
-    if code:
-        data.columns = ["{}_{}".format(s, code) for s in data.columns]  # append a code to the column names
         
     # Make a dictionary {group name: [samples names]}
     sample_groups = meta_data.groupby('MV_Group').apply(lambda x: x.index.tolist())

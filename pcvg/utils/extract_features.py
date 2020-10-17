@@ -2,7 +2,7 @@
 from .get_stats import get_stats
 import pandas as pd
 
-def extract_features(data_df, extract_stats=True):
+def extract_features(data_df, code=None, extract_stats=True):
  
     """ Extracts the features froa a pandas DataFrame where the column names encode the features.
         The column names are
@@ -12,6 +12,7 @@ def extract_features(data_df, extract_stats=True):
         Parameters:
 
             data_df - the DataFrame to use
+            code - an optional code that is appended to each feature
             extract_stats - TRue if we're to add the statistcs columns
 
         The column names are strings encoding the feature information.
@@ -49,6 +50,10 @@ def extract_features(data_df, extract_stats=True):
 
         this_feature['mz'] = float(parts[0])
         this_feature['rt'] = float(parts[1])
+
+        # add the code value if needed
+        if code:
+            this_feature['code'] = code
 
         # loop the remaining parts looking for recognized fields
         for p in parts[2:]:

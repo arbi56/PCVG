@@ -23,7 +23,7 @@ def plot_raw_data(feature_df, x, y, x_label, y_label, data_desc, size_field, col
         
         Returns
             a plot that can be diplayed with show(p) (Bokeh show command)
-            the ColumndataSource used by bokeh
+            the ColumndataSource used by bokeh (to allow additional processing)
         
         Default parameters are set by adding them to the kwargs dictionary (which need not be specified by the caller) and
         can be overridden by passing a dictionary.
