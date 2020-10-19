@@ -59,7 +59,7 @@ def extract_features(data_df, code=None, extract_stats=True):
         for p in parts[2:]:
             if "(" in p:
                 this_feature['iso'] = p.strip("()")[:4]
-            elif p[1] == 'x':
+            elif p[0] == 'x':
                 this_feature['expt'] = int(p[1:])   # store the chars following the 'x' as an integer
 
         # store the local feature in the master dictionary with the new feature name as the key...
