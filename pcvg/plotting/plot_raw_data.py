@@ -36,7 +36,7 @@ def plot_raw_data(feature_df, x, y, x_label, y_label, data_desc, size_field, col
     kwargs.setdefault("plot_height", 800)
     
     kwargs.setdefault("size_max", 20)
-    kwargs.setdefault("size_use_sqrt", False)
+    kwargs.setdefault("size_mode", 'sqrt')
     
     kwargs.setdefault("colour_use_log", True)
     kwargs.setdefault("palette", Viridis256[::-1])   #reverse Viridis so it gives yellow->blue
@@ -70,7 +70,7 @@ def plot_raw_data(feature_df, x, y, x_label, y_label, data_desc, size_field, col
     # the field to use is passed in by the caller
     # the default settings are used for circle size and whether to take the square root; can be overriden with kwargs.
     # the return value is a string that describes the data used for sizing
-    size_desc = set_size_column(feature_df, size_field, kwargs['size_max'], kwargs["size_use_sqrt"])
+    size_desc = set_size_column(feature_df, size_field, kwargs['size_max'], kwargs["size_mode"])
     
      # define the ColumnDataSource to be used 
     bokeh_source = ColumnDataSource(feature_df)
