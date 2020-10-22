@@ -25,13 +25,14 @@ def set_size_column(feature_df, col_to_use, max_size=20, size_mode = 'sqrt'):
             a string describing the scaling applied
 
     """
-    #add the 'point_size' column as the poriginal or its square root
+
+     #add the 'point_size' column as the poriginal or its square root
     if size_mode == 'sqrt':
         feature_df['point_size'] = np.sqrt(feature_df[col_to_use])
     elif size_mode == 'ln':
-        feature_df['point_size'] = np.log(feature_df[col_to_use]) + 1
+        feature_df['point_size'] = np.log(feature_df[col_to_use] + 1) + 1
     elif size_mode == 'log10':
-        feature_df['point_size'] = np.log10(feature_df[col_to_use]) + 1
+        feature_df['point_size'] = np.log10(feature_df[col_to_use] + 1) + 1
     elif size_mode == 'lin':
         feature_df['point_size'] = feature_df[col_to_use]
     else:
@@ -47,6 +48,6 @@ def set_size_column(feature_df, col_to_use, max_size=20, size_mode = 'sqrt'):
     feature_max = max(feature_df[col_to_use])
     
     #generate te description and return it
-    desc = f'{size_mode}({col_to_use}), (max: {feature_max:.1f})' if size_mode != 'lin' else f'{col_to_use}, (max: {feature_max:.1f})'
+    desc = f'{col_to_use} (max: {feature_max:.1f})' if size_mode == 'lin' else f'{size_mode}({col_to_use}) (max: {feature_max:.1f})'
     
     return desc
