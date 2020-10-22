@@ -12,7 +12,7 @@ def add_plot_selection_tools(p, source, plot_height, v_field, js_code, include_e
         Unfortunately it is not possible to retrieve tha values of data points selected in a Bokeh plot,
         so this code creates a Bokeh data Table, adds it to the plot and provides JS code to transfer the selcted
         value to the table.
-        ** Largely based on https://github.com/surfaceowl-ai/python_visualizations/blob/main/notebooks/bokeh_save_linked_plot_data.ipynb
+        Largely based on https://github.com/surfaceowl-ai/python_visualizations/blob/main/notebooks/bokeh_save_linked_plot_data.ipynb
         
         Parameters
             p - the exsting Bokeh plot
